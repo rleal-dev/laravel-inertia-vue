@@ -1,0 +1,18 @@
+<?php
+
+namespace App\View\Models;
+
+use App\Models\User;
+use Spatie\ViewModels\ViewModel;
+
+class UserViewModel extends ViewModel
+{
+    public function __construct(private User $user)
+    {
+    }
+
+    public function user()
+    {
+        return $this->user->only('id', 'name', 'email');
+    }
+}
