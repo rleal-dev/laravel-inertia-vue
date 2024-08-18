@@ -28,7 +28,7 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        $langFile = lang_path(app()->getLocale() . '/frontend.php');
+        $langFile = lang_path(app()->getLocale() . '/messages.php');
 
         return [
             ...parent::share($request),

@@ -20,7 +20,8 @@ class RoleController
     {
         Role::create($request->validated());
 
-        return to_route('roles.index')->with('success', 'Role created.');
+        return to_route('roles.index')
+            ->with('success', __('messages.roles.create.success'));
     }
 
     public function update(Request $request, Role $role)
@@ -31,13 +32,14 @@ class RoleController
 
         $role->update($data);
 
-        return to_route('roles.index')->with('success', 'Role updated.');
+        return to_route('roles.index')
+            ->with('success', __('messages.roles.edit.success'));
     }
 
     public function destroy(Role $role)
     {
         $role->delete();
 
-        return redirect()->back()->with('success', 'Role deleted.');
+        return back()->with('success', __('messages.roles.delete.success'));
     }
 }

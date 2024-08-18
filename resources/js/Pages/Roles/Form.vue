@@ -42,15 +42,15 @@ const closeModal = () => {
     <Modal :show="props.open" @close="closeModal">
         <div class="p-6">
             <h2 class="text-lg font-medium text-gray-900">
-                {{ props.role?.id ? __('roles.form.page_title_edit') : __('roles.form.page_title_create') }}
+                {{ props.role?.id ? __('roles.edit.page_title') : __('roles.create.page_title') }}
             </h2>
 
             <p class="mt-1 text-sm text-gray-600">
-                {{ __('roles.form.description') }}
+                {{ __('roles.create.description') }}
             </p>
 
             <div class="mt-6">
-                <InputLabel for="name" value="Name *" />
+                <InputLabel for="name" :value="__('fields.name')" />
 
                 <TextInput
                     id="name"
@@ -59,6 +59,7 @@ const closeModal = () => {
                     v-model="form.name"
                     autocomplete="name"
                     :error="form.errors.name"
+                    required
                 />
 
                 <InputError class="mt-2" :message="form.errors.name" />

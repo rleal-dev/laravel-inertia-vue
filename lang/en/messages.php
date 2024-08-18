@@ -71,6 +71,7 @@ return [
             'page_title' => 'Create User',
             'info' => 'Create a new user',
             'description' => 'Fill in the required fields and click save',
+            'success' => 'User created.',
         ],
         'show' => [
             'page_title' => 'Show User',
@@ -81,6 +82,11 @@ return [
             'page_title' => 'Edit User',
             'info' => 'Edit the user information',
             'description' => 'Fill in the required fields and click save',
+            'success' => 'User updated.',
+        ],
+        'delete' => [
+            'error' => 'Action not permitted',
+            'success' => 'User deleted.',
         ],
     ],
 
@@ -89,12 +95,19 @@ return [
             'page_title' => 'Roles',
             'add_role' => 'Add User',
         ],
-        'form' => [
-            'page_title_create' => 'Create Role',
-            'page_title_edit' => 'Edit Role',
-            'info_create' => 'Create a new role',
-            'info_edit' => 'Edit the role information',
+        'create' => [
+            'page_title' => 'Create Role',
+            'info' => 'Create a new role',
             'description' => 'Fill in the required fields and click save',
+            'success' => 'Role created.',
+        ],
+        'edit' => [
+            'page_title' => 'Edit Role',
+            'info' => 'Edit the role information',
+            'success' => 'Role updated.',
+        ],
+        'delete' => [
+            'success' => 'Role deleted.',
         ],
     ],
 

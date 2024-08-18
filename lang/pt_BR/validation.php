@@ -190,6 +190,15 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'nome',
+        'email' => 'e-mail',
+        'password' => 'senha',
+        'confirm_password' => 'confirmar senha',
+        'cuurent_password' => 'senha atual',
+        'new_password' => 'nova senha',
+        'role' => 'função',
+        'created_at' => 'criado em',
+    ],
 
 ];

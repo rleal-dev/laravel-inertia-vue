@@ -27,7 +27,8 @@ class UserController
     {
         User::create($request->validated());
 
-        return to_route('users.index')->with('success', 'User created.');
+        return to_route('users.index')
+            ->with('success', __('messages.users.create.success'));
     }
 
     public function show(User $user): Response
@@ -49,17 +50,19 @@ class UserController
 
         $user->update($data);
 
-        return to_route('users.index')->with('success', 'User updated.');
+        return to_route('users.index')
+            ->with('success', __('messages.users.edit.success'));
     }
 
     public function destroy(User $user)
     {
         if (auth()->user()->is($user)) {
-            return redirect()->back()->with('error', 'Action not permitted');
+            return back()->with('error', __('messages.users.delete.error'));
         }
 
         $user->delete();
 
-        return redirect()->back()->with('success', 'User deleted.');
+        return back()
+            ->with('success', __('messages.users.delete.success'));
     }
 }
