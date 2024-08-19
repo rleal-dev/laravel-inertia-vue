@@ -25,11 +25,11 @@ const submit = () => {
     <GuestLayout>
         <Head title="Forgot Password" />
 
-        <div class="mb-4 text-sm text-gray-600">
+        <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
             {{ __('forgot_password.info') }}
         </div>
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+        <div v-if="status" class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
             {{ status }}
         </div>
 
@@ -55,7 +55,6 @@ const submit = () => {
                     {{ __('forgot_password.reset_link') }}
                 </PrimaryButton>
             </div>
-
             <div class="flex items-center justify-between mt-4">
                 <Link
                     :href="route('login')"

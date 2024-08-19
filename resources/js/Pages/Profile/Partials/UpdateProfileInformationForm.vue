@@ -25,9 +25,9 @@ const form = useForm({
 <template>
     <section>
         <header>
-            <h2 class="text-lg font-medium text-gray-900">{{ __('profile.edit.title') }}</h2>
+            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">{{ __('profile.edit.title') }}</h2>
 
-            <p class="mt-1 text-sm text-gray-600">
+            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
                 {{ __('profile.edit.info') }}
             </p>
         </header>
@@ -67,13 +67,13 @@ const form = useForm({
             </div>
 
             <div v-if="mustVerifyEmail && user.email_verified_at === null">
-                <p class="text-sm mt-2 text-gray-800">
+                <p class="text-sm mt-2 text-gray-800 dark:text-gray-200">
                     {{ __('profile.edit.unverified_email') }}
                     <Link
                         :href="route('verification.send')"
                         method="post"
                         as="button"
-                        class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
                     >
                         {{ __('profile.edit.resend_email') }}
                     </Link>
@@ -81,7 +81,7 @@ const form = useForm({
 
                 <div
                     v-show="status === 'verification-link-sent'"
-                    class="mt-2 font-medium text-sm text-green-600"
+                    class="mt-2 font-medium text-sm text-green-600 dark:text-green-400"
                 >
                     {{ __('profile.edit.resend_info') }}
                 </div>
@@ -91,14 +91,13 @@ const form = useForm({
                 <PrimaryButton :loading="form.processing">
                     {{ __('common.save') }}
                 </PrimaryButton>
-
                 <Transition
                     enter-active-class="transition ease-in-out"
                     enter-from-class="opacity-0"
                     leave-active-class="transition ease-in-out"
                     leave-to-class="opacity-0"
                 >
-                    <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">{{ __('common.saved') }}</p>
+                    <p v-if="form.recentlySuccessful" class="text-sm text-gray-600 dark:text-gray-400">{{ __('common.saved') }}</p>
                 </Transition>
             </div>
         </form>
