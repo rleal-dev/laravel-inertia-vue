@@ -41,11 +41,11 @@ const closeModal = () => {
 <template>
     <Modal :show="props.open" @close="closeModal">
         <div class="p-6">
-            <h2 class="text-lg font-medium text-gray-900">
+            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
                 {{ props.role?.id ? __('roles.edit.page_title') : __('roles.create.page_title') }}
             </h2>
 
-            <p class="mt-1 text-sm text-gray-600">
+            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
                 {{ __('roles.create.description') }}
             </p>
 

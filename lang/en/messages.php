@@ -120,6 +120,7 @@ return [
     ],
 
     'fields' => [
+        'id' => 'ID',
         'name' => 'Name',
         'email' => 'Email',
         'password' => 'Password',

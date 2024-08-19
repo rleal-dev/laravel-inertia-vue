@@ -118,6 +118,7 @@ return [
     ],
 
     'fields' => [
+        'id' => 'ID',
         'name' => 'Nome',
         'email' => 'E-mail',
         'password' => 'Senha',
