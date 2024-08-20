@@ -95,7 +95,7 @@ return [
     'roles' => [
         'index' => [
             'page_title' => 'Roles',
-            'add_role' => 'Add User',
+            'add_role' => 'Add Role',
         ],
         'create' => [
             'page_title' => 'Create Role',
