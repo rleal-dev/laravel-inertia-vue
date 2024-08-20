@@ -1,5 +1,6 @@
 <script setup>
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+import ToggleTheme from '@/Components/ToggleTheme.vue';
 </script>
 
 <template>
@@ -8,6 +9,10 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
             <Link href="/">
                 <ApplicationLogo class="w-20 h-20 fill-current text-gray-500" />
             </Link>
+        </div>
+
+        <div class="fixed top-5 right-5">
+            <ToggleTheme />
         </div>
 
         <div
