@@ -42,14 +42,14 @@ return [
         'edit' => [
             'title' => 'Profile Information',
             'info' => 'Update your account\'s profile information and email address.',
-            'unverified_email' => 'Your email address is unverified..',
+            'unverified_email' => 'Your email address is unverified.',
             'resend_email' => 'Click here to re-send the verification email.',
             'resend_info' => 'A new verification link has been sent to your email address.',
         ],
         'password' => [
             'title' => 'Update Password',
             'info' => 'Ensure your account is using a long, random password to stay secure.',
-            'unverified_email' => 'Your email address is unverified..',
+            'unverified_email' => 'Your email address is unverified.',
             'resend_email' => 'Click here to re-send the verification email.',
             'resend_info' => 'A new verification link has been sent to your email address.',
         ],
@@ -66,6 +66,7 @@ return [
         'index' => [
             'page_title' => 'Users',
             'add_user' => 'Add User',
+            'not_found' => 'No records found',
         ],
         'create' => [
             'page_title' => 'Create User',
@@ -88,7 +89,7 @@ return [
             'confirm_delete_title' => 'Please Confirm',
             'confirm_delete_message' => 'Are you sure you want to delete the user?',
             'error' => 'Action not permitted',
-            'success' => 'User deleted.',
+            'success' => 'User deleted',
         ],
     ],
 
@@ -96,22 +97,23 @@ return [
         'index' => [
             'page_title' => 'Roles',
             'add_role' => 'Add Role',
+            'not_found' => 'No records found',
         ],
         'create' => [
             'page_title' => 'Create Role',
             'info' => 'Create a new role',
             'description' => 'Fill in the required fields and click save',
-            'success' => 'Role created.',
+            'success' => 'Role created',
         ],
         'edit' => [
             'page_title' => 'Edit Role',
             'info' => 'Edit the role information',
-            'success' => 'Role updated.',
+            'success' => 'Role updated',
         ],
         'delete' => [
             'confirm_delete_title' => 'Please Confirm',
             'confirm_delete_message' => 'Are you sure you want to delete the user?',
-            'success' => 'Role deleted.',
+            'success' => 'Role deleted',
         ],
     ],
 

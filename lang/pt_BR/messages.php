@@ -66,6 +66,7 @@ return [
         'index' => [
             'page_title' => 'Usuários',
             'add_user' => 'Novo Usuário',
+            'not_found' => 'Nenhum registro encontrado',
         ],
         'create' => [
             'page_title' => 'Criar Usuário',
@@ -96,6 +97,7 @@ return [
         'index' => [
             'page_title' => 'Funções',
             'add_role' => 'Nova Função',
+            'not_found' => 'Nenhum registro encontrado',
         ],
         'create' => [
             'page_title' => 'Criar Função',
