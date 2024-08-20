@@ -65,7 +65,7 @@ const closeForm = () => {
                         <div class="-m-1.5 overflow-x-auto">
                             <div class="p-1.5 min-w-full inline-block align-middle">
                                 <div class="border dark:border-transparent rounded-lg divide-y divide-gray-200 dark:divide-gray-700">
-                                    <div class="flex justify-between py-3 px-4 bg-gray-50 dark:bg-gray-800">
+                                    <div class="flex justify-between py-3 px-4 bg-white dark:bg-gray-800">
                                         <div class="relative max-w-xs">
                                             <label class="sr-only">Search</label>
                                             <div class="relative flex rounded-lg shadow-sm">
@@ -90,20 +90,20 @@ const closeForm = () => {
                                     <div class="overflow-hidden">
                                         <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                                             <thead class="bg-gray-50 dark:bg-gray-700">
-                                            <tr>
-                                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">
-                                                    {{ __('fields.id') }}
-                                                </th>
-                                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">
-                                                    {{ __('fields.name') }}
-                                                </th>
-                                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">
-                                                    {{ __('fields.created_at') }}
-                                                </th>
-                                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">
-                                                    {{ __('common.actions') }}
-                                                </th>
-                                            </tr>
+                                                <tr>
+                                                    <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">
+                                                        {{ __('fields.id') }}
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">
+                                                        {{ __('fields.name') }}
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">
+                                                        {{ __('fields.created_at') }}
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">
+                                                        {{ __('common.actions') }}
+                                                    </th>
+                                                </tr>
                                             </thead>
                                             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                                                 <tr v-for="role in roles.data" :key="role.id">
@@ -115,7 +115,7 @@ const closeForm = () => {
                                                             {{ __('common.edit') }}
                                                         </button>
                                                         
-                                                        <Link :href="route('roles.destroy', role)" method="DELETE" as="button" class="inline-flex items-center px-4 py-2 bg-red dark:bg-gray-800 border border-red-300 dark:border-red-400 rounded-md font-semibold text-xs text-red-300 dark:text-red-400 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150 mr-1">
+                                                        <Link :href="route('roles.destroy', role)" method="DELETE" as="button" class="inline-flex items-center px-4 py-2 bg-red dark:bg-gray-800 border border-red-300 dark:border-red-400 rounded-md font-semibold text-xs text-red-300 dark:text-red-400 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
                                                             {{ __('common.delete') }}
                                                         </Link>
                                                     </td>
@@ -123,7 +123,7 @@ const closeForm = () => {
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="py-1 px-4 bg-gray-50 dark:bg-gray-700">
+                                    <div class="py-1 px-4 bg-white dark:bg-gray-700">
                                         <Pagination :links="roles.links" />
                                     </div>
                                 </div>
