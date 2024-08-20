@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/auth.php';
 
+Route::get('/language/{language}', function ($language) {
+    session()->put('locale', $language);
+
+    return redirect()->back();
+})->name('language');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 

@@ -1,6 +1,7 @@
 <script setup>
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import ToggleTheme from '@/Components/ToggleTheme.vue';
+import SelectLanguages from '@/Components/SelectLanguages.vue';
 </script>
 
 <template>
@@ -11,7 +12,8 @@ import ToggleTheme from '@/Components/ToggleTheme.vue';
             </Link>
         </div>
 
-        <div class="fixed top-5 right-5">
+        <div class="fixed top-5 right-5 flex items-center">
+            <selectLanguages />
             <ToggleTheme />
         </div>
 

@@ -6,6 +6,7 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import ToggleTheme from '@/Components/ToggleTheme.vue';
+import SelectLanguages from '@/Components/SelectLanguages.vue';
 
 const showingNavigationDropdown = ref(false);
 </script>
@@ -42,6 +43,7 @@ const showingNavigationDropdown = ref(false);
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ms-6">
+                            <selectLanguages />
                             <ToggleTheme />
 
                             <!-- Settings Dropdown -->
