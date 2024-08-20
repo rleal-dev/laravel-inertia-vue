@@ -85,6 +85,8 @@ return [
             'success' => 'User updated.',
         ],
         'delete' => [
+            'confirm_delete_title' => 'Please Confirm',
+            'confirm_delete_message' => 'Are you sure you want to delete the user?',
             'error' => 'Action not permitted',
             'success' => 'User deleted.',
         ],
@@ -107,6 +109,8 @@ return [
             'success' => 'Role updated.',
         ],
         'delete' => [
+            'confirm_delete_title' => 'Please Confirm',
+            'confirm_delete_message' => 'Are you sure you want to delete the user?',
             'success' => 'Role deleted.',
         ],
     ],

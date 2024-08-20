@@ -4,6 +4,7 @@ import { router } from '@inertiajs/vue3'
 
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue"
 import Pagination from '@/Components/Pagination.vue'
+import ConfirmationDialog from '@/Components/ConfirmationDialog.vue'
 
 const props = defineProps({
     users: Object,
@@ -12,9 +13,23 @@ const props = defineProps({
 })
 
 const search = ref(props.filters.search);
+const showConfirmDelete = ref(false)
+const selectedUser = ref({})
 
 const onEnter = () => {
     router.get('/users', { search: search.value }, { preserveState: true, replace: true });
+}
+
+const confirmDelete = role => {
+    selectedUser.value = role
+    showConfirmDelete.value = true
+}
+
+const deleteUser = () => {
+    router.delete(route('users.destroy', selectedUser.value.id))
+
+    selectedUser.value = null
+    showConfirmDelete.value = false
 }
 </script>
 
@@ -114,9 +129,9 @@ const onEnter = () => {
                                                         <Link :href="route('users.edit', user)" v-if="permissions.edit" class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-blue-500 dark:border-blue-400 rounded-md font-semibold text-xs text-blue-500 dark:text-blue-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150 mr-2">
                                                             {{ __('common.edit') }}
                                                         </Link>
-                                                        <Link :href="route('users.destroy', user)" method="DELETE" as="button" class="inline-flex items-center px-4 py-2 bg-red dark:bg-gray-800 border border-red-300 dark:border-red-400 rounded-md font-semibold text-xs text-red-300 dark:text-red-400 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
+                                                        <button @click="confirmDelete(user)" v-if="permissions.edit" class="inline-flex items-center px-4 py-2 bg-red dark:bg-gray-800 border border-red-300 dark:border-red-400 rounded-md font-semibold text-xs text-red-300 dark:text-red-400 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
                                                             {{ __('common.delete') }}
-                                                        </Link>
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -132,6 +147,14 @@ const onEnter = () => {
                 </div>
             </div>
         </div>
+
+        <ConfirmationDialog
+            :show="showConfirmDelete"
+            :title="__('users.delete.confirm_delete_title')"
+            :message="__('users.delete.confirm_delete_message')"
+            @cancel="showConfirmDelete = false"
+            @confirm="deleteUser"
+        />
     </AuthenticatedLayout>
 </template>
 

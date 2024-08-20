@@ -4,6 +4,7 @@ import { router } from '@inertiajs/vue3'
 
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue"
 import Pagination from '@/Components/Pagination.vue'
+import ConfirmationDialog from '@/Components/ConfirmationDialog.vue'
 import Form from './Form.vue'
 
 const props = defineProps({
@@ -14,6 +15,7 @@ const props = defineProps({
 
 const search = ref(props.filters.search)
 const showModalForm = ref(false)
+const showConfirmDelete = ref(false)
 const selectedRole = ref({})
 
 const onEnter = () => {
@@ -27,6 +29,18 @@ const showForm = (role = null) => {
 
 const closeForm = () => {
     showModalForm.value = false
+}
+
+const confirmDelete = role => {
+    selectedRole.value = role
+    showConfirmDelete.value = true
+}
+
+const deleteRole = () => {
+    router.delete(route('roles.destroy', selectedRole.value.id))
+
+    selectedRole.value = null
+    showConfirmDelete.value = false
 }
 </script>
 
@@ -114,10 +128,10 @@ const closeForm = () => {
                                                         <button @click="showForm(role)" v-if="permissions.edit" class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-blue-500 dark:border-blue-400 rounded-md font-semibold text-xs text-blue-500 dark:text-blue-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150 mr-2">
                                                             {{ __('common.edit') }}
                                                         </button>
-                                                        
-                                                        <Link :href="route('roles.destroy', role)" method="DELETE" as="button" class="inline-flex items-center px-4 py-2 bg-red dark:bg-gray-800 border border-red-300 dark:border-red-400 rounded-md font-semibold text-xs text-red-300 dark:text-red-400 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
+
+                                                        <button @click="confirmDelete(role)" v-if="permissions.edit" class="inline-flex items-center px-4 py-2 bg-red dark:bg-gray-800 border border-red-300 dark:border-red-400 rounded-md font-semibold text-xs text-red-300 dark:text-red-400 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
                                                             {{ __('common.delete') }}
-                                                        </Link>
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -133,6 +147,15 @@ const closeForm = () => {
                 </div>
             </div>
         </div>
+
         <Form v-if="showModalForm" :role="selectedRole" @close="closeForm" />
+
+        <ConfirmationDialog
+            :show="showConfirmDelete"
+            :title="__('roles.delete.confirm_delete_title')"
+            :message="__('roles.delete.confirm_delete_message')"
+            @cancel="showConfirmDelete = false"
+            @confirm="deleteUser"
+        />
     </AuthenticatedLayout>
 </template>

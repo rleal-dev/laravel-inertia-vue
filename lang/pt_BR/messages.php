@@ -85,6 +85,8 @@ return [
             'success' => 'Usuário atualizado.',
         ],
         'delete' => [
+            'confirm_delete_title' => 'Por favor confirme',
+            'confirm_delete_message' => 'Tem certeza de que deseja excluir o usuário?',
             'error' => 'Action not permitted',
             'success' => 'Usuário excluído.',
         ],
@@ -105,6 +107,8 @@ return [
             'success' => 'Função atualizada.',
         ],
         'delete' => [
+            'confirm_delete_title' => 'Por favor confirme',
+            'confirm_delete_message' => 'Tem certeza de que deseja excluir a função?',
             'success' => 'Função excluída.',
         ],
     ],
