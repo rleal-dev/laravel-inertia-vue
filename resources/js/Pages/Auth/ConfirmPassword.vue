@@ -3,6 +3,7 @@ import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
+import SecondaryButton from '@/Components/SecondaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 
@@ -15,6 +16,8 @@ const submit = () => {
         onFinish: () => form.reset(),
     });
 };
+
+const goBack = () => window.history.back()
 </script>
 
 <template>
@@ -45,6 +48,10 @@ const submit = () => {
                 <PrimaryButton class="ms-4" :loading="form.processing">
                     {{ __('confirm_password.confirm') }}
                 </PrimaryButton>
+
+                <SecondaryButton @click="goBack" class="ms-4">
+                    {{ __('common.cancel') }}
+                </SecondaryButton>
             </div>
         </form>
     </GuestLayout>
