@@ -133,7 +133,7 @@ return [
         'confirm_password' => 'Confirm Password',
         'cuurent_password' => 'Current Password',
         'new_password' => 'New Password',
-        'role' => 'Role',
+        'roles' => 'Roles',
         'created_at' => 'Created At',
     ],
 

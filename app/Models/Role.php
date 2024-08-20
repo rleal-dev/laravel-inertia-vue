@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\Traits\EnableActivityLogs;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Traits\EnableActivityLogs;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Role extends Model
 {
@@ -19,4 +20,9 @@ class Role extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class)->withTimestamps();
+    }
 }

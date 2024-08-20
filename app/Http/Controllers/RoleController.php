@@ -39,6 +39,7 @@ class RoleController
     public function destroy(Role $role)
     {
         $role->delete();
+        $role->users()->detach();
 
         return back()->with('success', __('messages.roles.delete.success'));
     }

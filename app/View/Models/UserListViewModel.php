@@ -2,8 +2,9 @@
 
 namespace App\View\Models;
 
-use App\Queries\User\GetUserList;
+use App\Models\Role;
 use Spatie\ViewModels\ViewModel;
+use App\Queries\User\GetUserList;
 
 class UserListViewModel extends ViewModel
 {

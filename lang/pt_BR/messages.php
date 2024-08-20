@@ -131,7 +131,7 @@ return [
         'confirm_password' => 'Confirmar Senha',
         'cuurent_password' => 'Senha Atual',
         'new_password' => 'Nova Senha',
-        'role' => 'Função',
+        'roles' => 'Funções',
         'created_at' => 'Criado em',
     ],
 

@@ -4,12 +4,18 @@ import { useForm } from '@inertiajs/vue3';
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
+import Checkbox from '@/Components/Checkbox.vue';
 import InputError from '@/Components/InputError.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
+
+const props = defineProps({
+    roles: Array
+})
 
 const form = useForm({
     name: '',
     email: '',
+    roles: [],
     password: '',
     password_confirmation: '',
 });
@@ -71,7 +77,7 @@ const form = useForm({
     
                                     <InputError class="mt-2" :message="form.errors.email" />
                                 </div>
-    
+
                                 <div class="sm:col-span-3">
                                     <InputLabel for="password" :value="__('fields.password')" />
     
@@ -102,6 +108,27 @@ const form = useForm({
                                     />
     
                                     <InputError class="mt-2" :message="form.errors.password_confirmation" />
+                                </div>
+
+                                <div class="sm:col-span-6">
+                                    <InputLabel for="email" :value="__('fields.roles')" />
+
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                                        <div v-for="role in roles" :key="role.id" class="flex items-center">
+                                            <input
+                                                type="checkbox"
+                                                :id="`role-${role.id}`"
+                                                :value="role.id"
+                                                v-model="form.roles"
+                                                class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-100 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800"
+                                            />
+                                            <label :for="`role-${role.id}`" class="ml-2 block text-gray-700 dark:text-gray-100">
+                                                {{ role.name }}
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <InputError class="mt-2" :message="form.errors.roles" />
                                 </div>
                             </div>
 
