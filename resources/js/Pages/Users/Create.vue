@@ -36,71 +36,76 @@ const form = useForm({
                                 {{ __('users.create.description') }}
                             </p>
                         </header>
+
                         <form @submit.prevent="form.post(route('users.store'))" class="mt-6 space-y-6">
-                            <div>
-                                <InputLabel for="name" :value="__('fields.name')" />
-
-                                <TextInput
-                                    id="name"
-                                    type="text"
-                                    class="mt-1 block w-full"
-                                    v-model="form.name"
-                                    required
-                                    autofocus
-                                    autocomplete="name"
-                                    :error="form.errors.name"
-                                />
-
-                                <InputError class="mt-2" :message="form.errors.name" />
+                            <div class="grid gap-x-6 gap-y-8 sm:grid-cols-6">
+                                <div class="sm:col-span-3">
+                                    <InputLabel for="name" :value="__('fields.name')" />
+    
+                                    <TextInput
+                                        id="name"
+                                        type="text"
+                                        class="mt-1 block w-full"
+                                        v-model="form.name"
+                                        required
+                                        autofocus
+                                        autocomplete="name"
+                                        :error="form.errors.name"
+                                    />
+    
+                                    <InputError class="mt-2" :message="form.errors.name" />
+                                </div>
+    
+                                <div class="sm:col-span-3">
+                                    <InputLabel for="email" :value="__('fields.email')" />
+    
+                                    <TextInput
+                                        id="email"
+                                        type="email"
+                                        class="mt-1 block w-full"
+                                        v-model="form.email"
+                                        required
+                                        autocomplete="username"
+                                        :error="form.errors.email"
+                                    />
+    
+                                    <InputError class="mt-2" :message="form.errors.email" />
+                                </div>
+    
+                                <div class="sm:col-span-3">
+                                    <InputLabel for="password" :value="__('fields.password')" />
+    
+                                    <TextInput
+                                        id="password"
+                                        type="password"
+                                        class="mt-1 block w-full"
+                                        v-model="form.password"
+                                        required
+                                        autocomplete="new-password"
+                                        :error="form.errors.password"
+                                    />
+    
+                                    <InputError class="mt-2" :message="form.errors.password" />
+                                </div>
+    
+                                <div class="sm:col-span-3">
+                                    <InputLabel for="password_confirmation" :value="__('fields.confirm_password')" />
+    
+                                    <TextInput
+                                        id="password_confirmation"
+                                        type="password"
+                                        class="mt-1 block w-full"
+                                        v-model="form.password_confirmation"
+                                        required
+                                        autocomplete="new-password"
+                                        :error="form.errors.password_confirmation"
+                                    />
+    
+                                    <InputError class="mt-2" :message="form.errors.password_confirmation" />
+                                </div>
                             </div>
 
-                            <div>
-                                <InputLabel for="email" :value="__('fields.email')" />
-
-                                <TextInput
-                                    id="email"
-                                    type="email"
-                                    class="mt-1 block w-full"
-                                    v-model="form.email"
-                                    required
-                                    autocomplete="username"
-                                    :error="form.errors.email"
-                                />
-
-                                <InputError class="mt-2" :message="form.errors.email" />
-                            </div>
-
-                            <div>
-                                <InputLabel for="password" :value="__('fields.password')" />
-
-                                <TextInput
-                                    id="password"
-                                    type="password"
-                                    class="mt-1 block w-full"
-                                    v-model="form.password"
-                                    required
-                                    autocomplete="new-password"
-                                    :error="form.errors.password"
-                                />
-
-                                <InputError class="mt-2" :message="form.errors.password" />
-                            </div>
-
-                            <div>
-                                <InputLabel for="password_confirmation" :value="__('fields.confirm_password')" />
-
-                                <TextInput
-                                    id="password_confirmation"
-                                    type="password"
-                                    class="mt-1 block w-full"
-                                    v-model="form.password_confirmation"
-                                    required
-                                    autocomplete="new-password"
-                                    :error="form.errors.password_confirmation"
-                                />
-
-                                <InputError class="mt-2" :message="form.errors.password_confirmation" />
-                            </div>
+                            <hr class="dark:border-gray-600">
 
                             <div class="flex items-center gap-4">
                                 <PrimaryButton :loading="form.processing">{{ __('common.save') }}</PrimaryButton>

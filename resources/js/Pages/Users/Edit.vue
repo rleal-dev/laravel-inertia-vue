@@ -39,38 +39,42 @@ const form = useForm({
                             </p>
                         </header>
                         <form @submit.prevent="form.put(route('users.update', user))" class="mt-6 space-y-6">
-                            <div>
-                                <InputLabel for="name" :value="__('fields.name')" />
+                            <div class="grid gap-x-6 gap-y-8 sm:grid-cols-6">
+                                <div class="sm:col-span-3">
+                                    <InputLabel for="name" :value="__('fields.name')" />
+    
+                                    <TextInput
+                                        id="name"
+                                        type="text"
+                                        class="mt-1 block w-full"
+                                        v-model="form.name"
+                                        required
+                                        autofocus
+                                        autocomplete="name"
+                                        :error="form.errors.name"
+                                    />
+    
+                                    <InputError class="mt-2" :message="form.errors.name" />
+                                </div>
 
-                                <TextInput
-                                    id="name"
-                                    type="text"
-                                    class="mt-1 block w-full"
-                                    v-model="form.name"
-                                    required
-                                    autofocus
-                                    autocomplete="name"
-                                    :error="form.errors.name"
-                                />
-
-                                <InputError class="mt-2" :message="form.errors.name" />
+                                <div class="sm:col-span-3">
+                                    <InputLabel for="email" :value="__('fields.email')" />
+    
+                                    <TextInput
+                                        id="email"
+                                        type="email"
+                                        class="mt-1 block w-full"
+                                        v-model="form.email"
+                                        required
+                                        autocomplete="username"
+                                        :error="form.errors.email"
+                                    />
+    
+                                    <InputError class="mt-2" :message="form.errors.email" />
+                                </div>
                             </div>
 
-                            <div>
-                                <InputLabel for="email" :value="__('fields.email')" />
-
-                                <TextInput
-                                    id="email"
-                                    type="email"
-                                    class="mt-1 block w-full"
-                                    v-model="form.email"
-                                    required
-                                    autocomplete="username"
-                                    :error="form.errors.email"
-                                />
-
-                                <InputError class="mt-2" :message="form.errors.email" />
-                            </div>
+                            <hr class="dark:border-gray-600">
 
                             <div class="flex items-center gap-4">
                                 <PrimaryButton :loading="form.processing">{{ __('common.save') }}</PrimaryButton>
