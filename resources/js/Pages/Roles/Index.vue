@@ -78,7 +78,7 @@ const deleteRole = () => {
                     <div class="flex flex-col">
                         <div class="-m-1.5 overflow-x-auto">
                             <div class="p-1.5 min-w-full inline-block align-middle">
-                                <div class="border dark:border-transparent rounded-lg divide-y divide-gray-200 dark:divide-gray-700">
+                                <div class="border dark:border-gray-700 rounded-lg divide-y divide-gray-200 dark:divide-gray-700">
                                     <div class="flex justify-between py-3 px-4 bg-white dark:bg-gray-800">
                                         <div class="relative max-w-xs md:max-w-xl md:w-full">
                                             <label class="sr-only">Search</label>
@@ -137,7 +137,7 @@ const deleteRole = () => {
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="py-1 px-4 bg-white dark:bg-gray-700">
+                                    <div class="py-1 px-4">
                                         <Pagination :links="roles.links" />
                                     </div>
                                 </div>
