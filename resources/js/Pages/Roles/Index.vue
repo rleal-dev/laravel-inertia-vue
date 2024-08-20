@@ -80,7 +80,7 @@ const deleteRole = () => {
                             <div class="p-1.5 min-w-full inline-block align-middle">
                                 <div class="border dark:border-transparent rounded-lg divide-y divide-gray-200 dark:divide-gray-700">
                                     <div class="flex justify-between py-3 px-4 bg-white dark:bg-gray-800">
-                                        <div class="relative max-w-xs">
+                                        <div class="relative max-w-xs md:max-w-xl md:w-full">
                                             <label class="sr-only">Search</label>
                                             <div class="relative flex rounded-lg shadow-sm">
                                                 <input v-model="search" @keyup.enter="onEnter" type="text" class="py-2 px-3 ps-9 block w-full border-gray-200 dark:border-gray-600 shadow-sm rounded-s-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:text-gray-200" :placeholder="__('common.search')">
