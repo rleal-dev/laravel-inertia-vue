@@ -105,8 +105,6 @@ const form = useForm({
                                 </div>
                             </div>
 
-                            <hr class="dark:border-gray-600">
-
                             <div class="flex items-center gap-4">
                                 <PrimaryButton :loading="form.processing">{{ __('common.save') }}</PrimaryButton>
 
