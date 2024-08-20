@@ -92,6 +92,12 @@ const form = useForm({
                                     />
     
                                     <InputError class="mt-2" :message="form.errors.password" />
+
+                                    <div class="mt-2">
+                                        <p class="text-sm text-gray-500 dark:text-gray-300">{{ __('common.password_info_1') }}</p>
+                                        <p class="text-sm text-gray-500 dark:text-gray-300">{{ __('common.password_info_2') }}</p>
+                                        <p class="text-sm text-gray-500 dark:text-gray-300">{{ __('common.password_info_3') }}</p>
+                                    </div>
                                 </div>
     
                                 <div class="sm:col-span-3">

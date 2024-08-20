@@ -45,7 +45,7 @@ const updatePassword = () => {
 
         <form @submit.prevent="updatePassword" class="mt-6 space-y-6">
             <div>
-                <InputLabel for="current_password" :value="__('fields.cuurent_password')" />
+                <InputLabel for="current_password" :value="__('fields.current_password')" />
 
                 <TextInput
                     id="current_password"
@@ -89,6 +89,12 @@ const updatePassword = () => {
                 />
 
                 <InputError :message="form.errors.password_confirmation" class="mt-2" />
+
+                <div class="mt-2">
+                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{{ __('common.password_info_1') }}</p>
+                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{{ __('common.password_info_2') }}</p>
+                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{{ __('common.password_info_3') }}</p>
+                </div>
             </div>
 
             <div class="flex items-center gap-4">

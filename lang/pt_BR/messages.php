@@ -129,7 +129,7 @@ return [
         'email' => 'E-mail',
         'password' => 'Senha',
         'confirm_password' => 'Confirmar Senha',
-        'cuurent_password' => 'Senha Atual',
+        'current_password' => 'Senha Atual',
         'new_password' => 'Nova Senha',
         'roles' => 'Funções',
         'created_at' => 'Criado em',
@@ -147,5 +147,8 @@ return [
         'next' => 'Próximo',
         'actions' => 'Ações',
         'back' => 'Voltar',
+        'password_info_1'=> '* A senha deve ter pelo menos 8 caracteres',
+        'password_info_2'=> '* Combinação de letras maiúsculas, minúsculas e números',
+        'password_info_3'=> '* Uso de caracteres especiais',
     ],
 ];

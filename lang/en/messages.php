@@ -131,7 +131,7 @@ return [
         'email' => 'Email',
         'password' => 'Password',
         'confirm_password' => 'Confirm Password',
-        'cuurent_password' => 'Current Password',
+        'current_password' => 'Current Password',
         'new_password' => 'New Password',
         'roles' => 'Roles',
         'created_at' => 'Created At',
@@ -149,5 +149,8 @@ return [
         'next' => 'Next',
         'actions' => 'Actions',
         'back' => 'Back',
+        'password_info_1'=> '* Password must be at least 8 characters',
+        'password_info_2'=> '* Combination of uppercase, lowercase and numbers',
+        'password_info_3'=> '* Use of special characters',
     ],
 ];

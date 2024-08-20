@@ -191,13 +191,14 @@ return [
     */
 
     'attributes' => [
+        'id' => 'ID',
         'name' => 'nome',
         'email' => 'e-mail',
         'password' => 'senha',
         'confirm_password' => 'confirmar senha',
-        'cuurent_password' => 'senha atual',
+        'current_password' => 'senha atual',
         'new_password' => 'nova senha',
-        'role' => 'função',
+        'roles' => 'funções',
         'created_at' => 'criado em',
     ],
 
