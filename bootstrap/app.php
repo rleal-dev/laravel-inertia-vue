@@ -27,7 +27,7 @@ return Application::configure(basePath: dirname(__DIR__))
                     'message' => 'The page expired, please try again.',
                 ]);
             }
-    
+
             return $response;
         });
     })->create();

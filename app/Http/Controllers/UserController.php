@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserStoreRequest;
 use App\Models\Role;
 use App\Models\User;
-use Inertia\Response;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
+use App\View\Models\UserListViewModel;
 use App\View\Models\UserViewModel;
 use Illuminate\Http\RedirectResponse;
-use App\View\Models\UserListViewModel;
-use App\Http\Requests\UserStoreRequest;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Inertia\Response;
 
 class UserController
 {
@@ -30,6 +30,13 @@ class UserController
     {
         $user = User::create($request->only(['name', 'email', 'password']));
         $user->roles()->sync($request->roles);
+
+        if ($request->hasFile('avatar')) {
+            $imagePath = $request->file('avatar')->store('avatars', 'public');
+
+            $user->avatar = $imagePath;
+            $user->save();
+        }
 
         return to_route('users.index')
             ->with('success', __('messages.users.create.success'));
@@ -51,10 +58,18 @@ class UserController
             'name' => ['required', 'string', 'max:50'],
             'email' => ['required', 'max:50', 'email', Rule::unique('users')->ignore($user->id)],
             'roles' => ['required', 'array'],
+            'avatar' => ['nullable'],
         ]);
 
         $user->update($request->only(['name', 'email']));
         $user->roles()->sync($request->roles);
+
+        if ($request->hasFile('avatar')) {
+            $imagePath = $request->file('avatar')->store('avatars', 'public');
+
+            $user->avatar = $imagePath;
+            $user->save();
+        }
 
         return to_route('users.index')
             ->with('success', __('messages.users.edit.success'));

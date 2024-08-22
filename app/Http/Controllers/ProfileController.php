@@ -35,9 +35,15 @@ class ProfileController
             $request->user()->email_verified_at = null;
         }
 
+        if ($request->hasFile('avatar')) {
+            $imagePath = $request->file('avatar')->store('avatars', 'public');
+
+            $request->user()->avatar = $imagePath;
+        }
+
         $request->user()->save();
 
-        return Redirect::route('profile.edit');
+        return to_route('profile.edit');
     }
 
     /**

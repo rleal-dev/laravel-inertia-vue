@@ -1,9 +1,10 @@
 <script setup>
+import { router, useForm, usePage } from '@inertiajs/vue3';
+
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import { useForm, usePage } from '@inertiajs/vue3';
 
 defineProps({
     mustVerifyEmail: {
@@ -19,7 +20,20 @@ const user = usePage().props.auth.user;
 const form = useForm({
     name: user.name,
     email: user.email,
+    avatar: null
 });
+
+const previewImage = event => {
+    const file = event.target.files[0]
+    user.avatar_url = URL.createObjectURL(file)
+}
+
+const updateProfile = () => {
+    router.post(route('profile.update'), {
+        _method: 'patch',
+        ...form,
+    })
+}
 </script>
 
 <template>
@@ -32,7 +46,7 @@ const form = useForm({
             </p>
         </header>
 
-        <form @submit.prevent="form.patch(route('profile.update'))" class="mt-6 space-y-6">
+        <form @submit.prevent="updateProfile" class="mt-6 space-y-6">
             <div>
                 <InputLabel for="name" :value="__('fields.name')" />
 
@@ -66,9 +80,27 @@ const form = useForm({
                 <InputError class="mt-2" :message="form.errors.email" />
             </div>
 
+            <div class="col-span-full">
+                <InputLabel for="password_confirmation" :value="__('fields.photo')" />
+
+                <div class="mt-2 flex items-center gap-x-3">
+                    <img :src="user.avatar_url" class="h-10 w-10 rounded-full" />
+                    <input
+                        type="file"
+                        @input="form.avatar = $event.target.files[0]"
+                        @change="previewImage"
+                        ref="photo"
+                        class="w-100 px-2 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+                    />
+                </div>
+                
+                <InputError class="mt-2" :message="form.errors.avatar" />
+            </div>
+
             <div v-if="mustVerifyEmail && user.email_verified_at === null">
                 <p class="text-sm mt-2 text-gray-800 dark:text-gray-200">
                     {{ __('profile.edit.unverified_email') }}
+
                     <Link
                         :href="route('verification.send')"
                         method="post"
@@ -87,10 +119,11 @@ const form = useForm({
                 </div>
             </div>
 
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2">
                 <PrimaryButton :loading="form.processing">
                     {{ __('common.save') }}
                 </PrimaryButton>
+
                 <Transition
                     enter-active-class="transition ease-in-out"
                     enter-from-class="opacity-0"

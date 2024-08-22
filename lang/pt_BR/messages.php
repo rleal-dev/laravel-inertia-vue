@@ -133,6 +133,7 @@ return [
         'new_password' => 'Nova Senha',
         'roles' => 'Funções',
         'created_at' => 'Criado em',
+        'photo' => 'Foto',
     ],
 
     'common' => [

@@ -73,13 +73,16 @@ const deleteUser = () => {
                                                         {{ __('fields.id') }}
                                                     </th>
                                                     <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">
+                                                        {{ __('fields.photo') }}
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">
                                                         {{ __('fields.name') }}
                                                     </th>
                                                     <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">
                                                         {{ __('fields.email') }}
                                                     </th>
                                                     <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">
-                                                        {{ __('fields.role') }}
+                                                        {{ __('fields.roles') }}
                                                     </th>
                                                     <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">
                                                         {{ __('fields.created_at') }}
@@ -92,9 +95,12 @@ const deleteUser = () => {
                                             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                                                 <tr v-for="user in users.data" :key="user.id">
                                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{{ user.id }}</td>
+                                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">
+                                                        <img :src="user.avatar_url" class="h-10 w-10 rounded-full" />
+                                                    </td>
                                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{{ user.name }}</td>
                                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ user.email }}</td>
-                                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">Admin</td>
+                                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ user.roles }}</td>
                                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ user.created_at }}</td>
                                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                                         <Link :href="route('users.show', user)" class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-200 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150 mr-2">

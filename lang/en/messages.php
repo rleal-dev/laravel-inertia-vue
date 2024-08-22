@@ -135,6 +135,7 @@ return [
         'new_password' => 'New Password',
         'roles' => 'Roles',
         'created_at' => 'Created At',
+        'photo' => 'Photo',
     ],
 
     'common' => [

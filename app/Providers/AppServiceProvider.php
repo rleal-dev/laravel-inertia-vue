@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Model::shouldBeStrict(app()->isLocal());
-        
+
         Password::defaults(function () {
             return Password::min(8)
                 ->letters()
