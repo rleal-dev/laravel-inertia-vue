@@ -1,10 +1,7 @@
 <script setup>
 defineProps({
-    href: {
-        type: String,
-        required: true,
-    },
-});
+    href: { type: String, required: true },
+})
 </script>
 
 <template>

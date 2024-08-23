@@ -1,11 +1,11 @@
 <script setup>
-import { useForm } from '@inertiajs/vue3';
+import { useForm } from '@inertiajs/vue3'
 
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import InputLabel from '@/Components/InputLabel.vue';
-import TextInput from '@/Components/TextInput.vue';
-import InputError from '@/Components/InputError.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
+import InputLabel from '@/Components/InputLabel.vue'
+import TextInput from '@/Components/TextInput.vue'
+import InputError from '@/Components/InputError.vue'
+import PrimaryButton from '@/Components/PrimaryButton.vue'
 
 const props = defineProps({
     roles: Array
@@ -19,7 +19,7 @@ const form = useForm({
     password_confirmation: '',
     avatar: null,
     image_preview: null
-});
+})
 
 const previewImage = event => {
     const file = event.target.files[0]

@@ -1,16 +1,16 @@
 <script setup>
-import { router, useForm } from '@inertiajs/vue3';
+import { router, useForm } from '@inertiajs/vue3'
 
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import InputLabel from '@/Components/InputLabel.vue';
-import TextInput from '@/Components/TextInput.vue';
-import InputError from '@/Components/InputError.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
+import InputLabel from '@/Components/InputLabel.vue'
+import TextInput from '@/Components/TextInput.vue'
+import InputError from '@/Components/InputError.vue'
+import PrimaryButton from '@/Components/PrimaryButton.vue'
 
 const props = defineProps({
     user: { type: Object },
     roles: { type: Array },
-});
+})
 
 const form = useForm({
     name: props.user.name,
@@ -18,7 +18,7 @@ const form = useForm({
     roles: props.user.roles,
     avatar: null,
     image_preview: null
-});
+})
 
 const updateUser = () => {
     router.post(route('users.update', props.user), {

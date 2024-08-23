@@ -1,13 +1,13 @@
 <script setup>
 import { watch } from 'vue'
-import { useForm } from '@inertiajs/vue3';
+import { useForm } from '@inertiajs/vue3'
 
-import Modal from '@/Components/Modal.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import TextInput from '@/Components/TextInput.vue';
-import InputError from '@/Components/InputError.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import SecondaryButton from '@/Components/SecondaryButton.vue';
+import Modal from '@/Components/Modal.vue'
+import InputLabel from '@/Components/InputLabel.vue'
+import TextInput from '@/Components/TextInput.vue'
+import InputError from '@/Components/InputError.vue'
+import PrimaryButton from '@/Components/PrimaryButton.vue'
+import SecondaryButton from '@/Components/SecondaryButton.vue'
 
 const props = defineProps({
     open: { type: Boolean, default: true},
@@ -18,7 +18,7 @@ const emit = defineEmits(['close'])
 
 const form = useForm({
     name: props.role.name ?? '',
-});
+})
 
 const saveRole = () => {
     const params = {
@@ -28,13 +28,13 @@ const saveRole = () => {
 
     return props.role.id
         ? form.put(route('roles.update', props.role.id), params)
-        : form.post(route('roles.store'), params);
+        : form.post(route('roles.store'), params)
 }
 
 const closeModal = () => {
-    form.reset();
-    form.clearErrors();
-    emit('close');
+    form.reset()
+    form.clearErrors()
+    emit('close')
 }
 </script>
 

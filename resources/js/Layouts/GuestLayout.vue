@@ -1,7 +1,7 @@
 <script setup>
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
-import ToggleTheme from '@/Components/ToggleTheme.vue';
-import SelectLanguages from '@/Components/SelectLanguages.vue';
+import ApplicationLogo from '@/Components/ApplicationLogo.vue'
+import ToggleTheme from '@/Components/ToggleTheme.vue'
+import SelectLanguages from '@/Components/SelectLanguages.vue'
 </script>
 
 <template>

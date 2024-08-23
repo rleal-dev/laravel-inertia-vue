@@ -1,13 +1,13 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 import { router } from '@inertiajs/vue3'
 
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue"
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 import Pagination from '@/Components/Pagination.vue'
 import ConfirmationDialog from '@/Components/ConfirmationDialog.vue'
-import AlertSuccess from '@/Components/AlertSuccess.vue';
-import AlertError from '@/Components/AlertError.vue';
-import Search from '@/Components/Search.vue';
+import AlertSuccess from '@/Components/AlertSuccess.vue'
+import AlertError from '@/Components/AlertError.vue'
+import Search from '@/Components/Search.vue'
 
 const props = defineProps({
     users: Object,
@@ -15,12 +15,12 @@ const props = defineProps({
     permissions: Object,
 })
 
-const search = ref(props.filters.search);
+const search = ref(props.filters.search)
 const showConfirmDelete = ref(false)
 const selectedUser = ref({})
 
 const searchUsers = () => {
-    router.get('/users', { search: search.value }, { preserveState: true, replace: true });
+    router.get('/users', { search: search.value }, { preserveState: true, replace: true })
 }
 
 const confirmDelete = role => {
@@ -145,6 +145,6 @@ const deleteUser = () => {
 
 <style>
 .checkbox:checked + .check-icon {
-    display: flex;
+    display: flex
 }
 </style>

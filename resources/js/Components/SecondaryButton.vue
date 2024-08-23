@@ -1,10 +1,7 @@
 <script setup>
 defineProps({
-    type: {
-        type: String,
-        default: 'button',
-    },
-});
+    type: { type: String, default: 'button' },
+})
 </script>
 
 <template>

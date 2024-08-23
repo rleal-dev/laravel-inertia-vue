@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
                 'name' => 'Rogerio Leal',
                 'email' => 'rleal.dev@gmail.com',
                 'password' => '11111111',
-                'email_verified_at' => now()->toDateTimeString()
+                'email_verified_at' => now()->toDateTimeString(),
             ],
         ]);
 

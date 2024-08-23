@@ -1,15 +1,15 @@
 <script setup>
-import Modal from '@/Components/Modal.vue';
-import SecondaryButton from '@/Components/SecondaryButton.vue';
-import DangerButton from '@/Components/DangerButton.vue';
+import Modal from '@/Components/Modal.vue'
+import SecondaryButton from '@/Components/SecondaryButton.vue'
+import DangerButton from '@/Components/DangerButton.vue'
 
 const props = defineProps({
-    show: Boolean,
-    title: String,
-    message: String,
-});
+    show: { type: Boolean },
+    title: { type: String },
+    message: { type: String },
+})
 
-const emit = defineEmits(["cancel", "confirm"]);
+const emit = defineEmits(["cancel", "confirm"])
 </script>
 
 <template>

@@ -1,32 +1,28 @@
 <script setup>
-import Checkbox from '@/Components/Checkbox.vue';
-import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
-import { useForm } from '@inertiajs/vue3';
+import { useForm } from '@inertiajs/vue3'
+
+import Checkbox from '@/Components/Checkbox.vue'
+import GuestLayout from '@/Layouts/GuestLayout.vue'
+import InputError from '@/Components/InputError.vue'
+import InputLabel from '@/Components/InputLabel.vue'
+import PrimaryButton from '@/Components/PrimaryButton.vue'
+import TextInput from '@/Components/TextInput.vue'
 
 defineProps({
-    canResetPassword: {
-        type: Boolean,
-    },
-    status: {
-        type: String,
-    },
-});
+    status: { type: String },
+})
 
 const form = useForm({
     email: '',
     password: '',
     remember: false,
-});
+})
 
 const submit = () => {
     form.post(route('login'), {
         onFinish: () => form.reset('password'),
-    });
-};
+    })
+}
 </script>
 
 <template>
@@ -73,28 +69,32 @@ const submit = () => {
             <div class="block mt-4">
                 <label class="flex items-center">
                     <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('login.remember') }}</span>
+                    <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">
+                        {{ __("login.remember") }}
+                    </span>
                 </label>
             </div>
             <div class="flex items-center mt-4">
-                <PrimaryButton class="flex w-full justify-center" :loading="form.processing">
-                    {{ __('login.signin') }}
+                <PrimaryButton
+                    class="flex w-full justify-center"
+                    :loading="form.processing"
+                >
+                    {{ __("login.signin") }}
                 </PrimaryButton>
             </div>
             <div class="flex items-center justify-between mt-4">
                 <Link
-                    v-if="canResetPassword"
                     :href="route('password.request')"
                     class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
                 >
-                    {{ __('login.forgot_password') }}
+                    {{ __("login.forgot_password") }}
                 </Link>
 
                 <Link
                     :href="route('register')"
                     class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                    {{ __('login.register') }}
+                    {{ __("login.register") }}
                 </Link>
             </div>
         </form>

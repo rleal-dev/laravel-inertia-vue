@@ -1,16 +1,16 @@
-import '../css/app.css';
+import '../css/app.css'
 
-import { createApp, h } from 'vue';
-import { router, createInertiaApp } from '@inertiajs/vue3';
-import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import { ZiggyVue } from '../../vendor/tightenco/ziggy';
+import { createApp, h } from 'vue'
+import { router, createInertiaApp } from '@inertiajs/vue3'
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
+import { ZiggyVue } from '../../vendor/tightenco/ziggy'
 import NProgress from 'nprogress'
-import { Head, Link } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3'
 import __ from '@/lang'
 
 router.on('start', () => NProgress.start())
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+const appName = import.meta.env.VITE_APP_NAME || 'Laravel'
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -30,4 +30,4 @@ createInertiaApp({
         color: '#818cf8',
         showSpinner: true,
     },
-});
+})

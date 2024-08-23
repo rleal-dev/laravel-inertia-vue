@@ -1,25 +1,26 @@
 <script setup>
-import DangerButton from '@/Components/DangerButton.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import Modal from '@/Components/Modal.vue';
-import SecondaryButton from '@/Components/SecondaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
-import { useForm } from '@inertiajs/vue3';
-import { nextTick, ref } from 'vue';
+import { nextTick, ref } from 'vue'
+import { useForm } from '@inertiajs/vue3'
 
-const confirmingUserDeletion = ref(false);
-const passwordInput = ref(null);
+import Modal from '@/Components/Modal.vue'
+import TextInput from '@/Components/TextInput.vue'
+import InputError from '@/Components/InputError.vue'
+import InputLabel from '@/Components/InputLabel.vue'
+import DangerButton from '@/Components/DangerButton.vue'
+import SecondaryButton from '@/Components/SecondaryButton.vue'
+
+const passwordInput = ref(null)
+const confirmingUserDeletion = ref(false)
 
 const form = useForm({
     password: '',
-});
+})
 
 const confirmUserDeletion = () => {
-    confirmingUserDeletion.value = true;
+    confirmingUserDeletion.value = true
 
-    nextTick(() => passwordInput.value.focus());
-};
+    nextTick(() => passwordInput.value.focus())
+}
 
 const deleteUser = () => {
     form.delete(route('profile.destroy'), {
@@ -27,14 +28,13 @@ const deleteUser = () => {
         onSuccess: () => closeModal(),
         onError: () => passwordInput.value.focus(),
         onFinish: () => form.reset(),
-    });
-};
+    })
+}
 
 const closeModal = () => {
-    confirmingUserDeletion.value = false;
-
-    form.reset();
-};
+    confirmingUserDeletion.value = false
+    form.reset()
+}
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script setup>
 const model = defineModel()
-const emit = defineEmits(['search']);
+const emit = defineEmits(['search'])
 </script>
 
 <template>

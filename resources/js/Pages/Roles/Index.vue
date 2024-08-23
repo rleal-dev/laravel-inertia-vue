@@ -2,12 +2,12 @@
 import { ref } from 'vue'
 import { router } from '@inertiajs/vue3'
 
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue"
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 import Pagination from '@/Components/Pagination.vue'
 import ConfirmationDialog from '@/Components/ConfirmationDialog.vue'
-import AlertSuccess from '@/Components/AlertSuccess.vue';
-import AlertError from '@/Components/AlertError.vue';
-import Search from '@/Components/Search.vue';
+import AlertSuccess from '@/Components/AlertSuccess.vue'
+import AlertError from '@/Components/AlertError.vue'
+import Search from '@/Components/Search.vue'
 import Form from './Form.vue'
 
 const props = defineProps({

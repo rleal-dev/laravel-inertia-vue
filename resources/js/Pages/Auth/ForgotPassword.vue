@@ -1,24 +1,19 @@
 <script setup>
-import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
-import { useForm } from '@inertiajs/vue3';
+import { useForm } from '@inertiajs/vue3'
+
+import GuestLayout from '@/Layouts/GuestLayout.vue'
+import InputError from '@/Components/InputError.vue'
+import InputLabel from '@/Components/InputLabel.vue'
+import PrimaryButton from '@/Components/PrimaryButton.vue'
+import TextInput from '@/Components/TextInput.vue'
 
 defineProps({
-    status: {
-        type: String,
-    },
-});
+    status: { type: String },
+})
 
 const form = useForm({
     email: '',
-});
-
-const submit = () => {
-    form.post(route('password.email'));
-};
+})
 </script>
 
 <template>
@@ -33,7 +28,7 @@ const submit = () => {
             {{ status }}
         </div>
 
-        <form @submit.prevent="submit">
+        <form @submit.prevent="form.post(route('password.email'))">
             <div>
                 <InputLabel for="email" :value="__('fields.email')" />
 

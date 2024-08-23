@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 use Inertia\Response;
 
-class EmailVerificationPromptController
+class EmailVerificationController
 {
     /**
      * Display the email verification prompt.
@@ -15,7 +14,7 @@ class EmailVerificationPromptController
     public function __invoke(Request $request): RedirectResponse|Response
     {
         return $request->user()->hasVerifiedEmail()
-                    ? redirect()->intended(route('dashboard', absolute: false))
-                    : Inertia::render('Auth/VerifyEmail', ['status' => session('status')]);
+            ? redirect()->intended(route('dashboard', absolute: false))
+            : inertia('Auth/VerifyEmail', ['status' => session('status')]);
     }
 }
