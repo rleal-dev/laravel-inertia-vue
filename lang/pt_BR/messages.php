@@ -115,7 +115,7 @@ return [
         ],
     ],
 
-    'header' => [
+    'menus' => [
         'dashboard' => 'Painel',
         'users' => 'Usuários',
         'roles' => 'Funções',
