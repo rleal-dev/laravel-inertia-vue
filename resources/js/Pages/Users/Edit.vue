@@ -15,7 +15,7 @@ const props = defineProps({
 const form = useForm({
     name: props.user.name,
     email: props.user.email,
-    roles: props.user.roles,
+    roles: Object.keys(props.user.roles),
     avatar: null,
     image_preview: null
 })

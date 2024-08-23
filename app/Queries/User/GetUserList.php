@@ -9,6 +9,7 @@ class GetUserList
     public function handle()
     {
         return User::query()
+            ->with('roles')
             ->when(request('search'), function ($query, $search) {
                 $query->where('name', 'like', "%{$search}%")
                     ->orWhere('email', 'like', "%{$search}%");
@@ -20,6 +21,7 @@ class GetUserList
                 'name' => $user->name,
                 'email' => $user->email,
                 'avatar_url' => $user->avatar_url,
+                'roles' => $user->roles->pluck('name'),
                 'created_at' => $user->created_at->toDateTimeString(),
             ]);
     }

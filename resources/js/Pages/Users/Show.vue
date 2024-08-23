@@ -1,5 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
+import InputLabel from '@/Components/InputLabel.vue'
 
 defineProps({
     user: { type: Object },
@@ -32,8 +33,17 @@ defineProps({
                             <p class="mb-4">
                                 <img :src="user.avatar_url" class="h-20 w-20 rounded-full" />
                             </p>
+
+                            <InputLabel for="name" :value="__('fields.name')" />
                             <p class="text-sm text-gray dark:text-white mb-4">{{ user.name }}</p>
-                            <p class="text-sm text-gray dark:text-white">{{ user.email }}</p>
+
+                            <InputLabel for="name" :value="__('fields.email')" />
+                            <p class="text-sm text-gray dark:text-white mb-4">{{ user.email }}</p>
+
+                            <InputLabel for="name" :value="__('fields.roles')" />
+                            <span v-for="role in user.roles" :key="role" class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 mt-1 mr-2 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                                {{ role }}
+                            </span>
                         </div>
 
                         <div class="flex items-center gap-2">
