@@ -133,7 +133,7 @@ const deleteRole = () => {
             :show="showConfirmDelete"
             :title="__('roles.delete.confirm_delete_title')"
             :message="__('roles.delete.confirm_delete_message')"
-            @cancel="showConfirmDelete = false"
+            @close="showConfirmDelete = false"
             @confirm="deleteRole"
         />
     </AuthenticatedLayout>

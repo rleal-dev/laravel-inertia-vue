@@ -46,11 +46,11 @@ const goBack = () => window.history.back()
             </div>
 
             <div class="flex justify-end mt-4">
-                <PrimaryButton class="ms-4" :loading="form.processing">
+                <PrimaryButton class="ms-2" :loading="form.processing">
                     {{ __('confirm_password.confirm') }}
                 </PrimaryButton>
 
-                <SecondaryButton @click="goBack" class="ms-4">
+                <SecondaryButton @click="goBack" class="ms-2">
                     {{ __('common.cancel') }}
                 </SecondaryButton>
             </div>

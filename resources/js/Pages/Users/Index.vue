@@ -141,7 +141,7 @@ const deleteUser = () => {
             :show="showConfirmDelete"
             :title="__('users.delete.confirm_delete_title')"
             :message="__('users.delete.confirm_delete_message')"
-            @cancel="showConfirmDelete = false"
+            @close="showConfirmDelete = false"
             @confirm="deleteUser"
         />
     </AuthenticatedLayout>

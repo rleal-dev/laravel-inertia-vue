@@ -1,4 +1,17 @@
 <script setup>
+import { ref } from 'vue'
+
+const menuOpen = ref(null)
+
+const openMenu = menu => {
+    if (menuOpen.value === menu) {
+        menuOpen.value = null
+
+        return false
+    }
+
+    menuOpen.value = menu
+}
 </script>
 
 <template>
@@ -13,6 +26,29 @@
                         </svg>
                         <span class="ms-3">{{ __('menus.dashboard') }}</span>
                     </Link>
+                </li>
+                <li>
+                    <button @click="openMenu(2)" class="flex items-center w-full py-2 px-4 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Settings</span>
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="m1 1 4 4 4-4"/>
+                        </svg>
+                    </button>
+                    <ul v-if="menuOpen === 2" class="py-2 space-y-2">
+                        <li>
+                            <Link :href="route('roles.index')" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                                {{ __('menus.roles') }}
+                            </Link>
+                        </li>
+                        <li>
+                            <Link :href="route('users.index')" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                                {{ __('menus.users') }}
+                            </Link>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <Link :href="route('roles.index')" class="flex items-center py-2 px-4 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">

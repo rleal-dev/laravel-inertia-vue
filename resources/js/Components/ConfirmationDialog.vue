@@ -9,17 +9,17 @@ const props = defineProps({
     message: { type: String },
 })
 
-const emit = defineEmits(["cancel", "confirm"])
+const emit = defineEmits(['close', 'confirm'])
 </script>
 
 <template>
-    <Modal :show="show" max-width="md">
+    <Modal :show="show" @close="($event) => emit('close')" max-width="md">
         <div class="p-6">
             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">{{ title }}</h2>
             <p class="text-gray-600 dark:text-gray-400">{{ message }}</p>
             
             <div class="mt-6 flex justify-end">
-                <SecondaryButton @click="($event) => emit('cancel')">Cancel</SecondaryButton>
+                <SecondaryButton @click="($event) => emit('close')">Cancel</SecondaryButton>
 
                 <DangerButton class="ml-3" @click="($event) => emit('confirm')">
                     Confirm
