@@ -14,6 +14,15 @@ class GetUserList
                 $query->where('name', 'like', "%{$search}%")
                     ->orWhere('email', 'like', "%{$search}%");
             })
+            ->when(request('status'), function ($query, $status) {
+                if ($status === 'all') {
+                    $query->withTrashed();
+                }
+
+                if ($status === 'trashed') {
+                    $query->onlyTrashed();
+                }
+            })
             ->paginate(10)
             ->withQueryString()
             ->through(fn ($user) => [

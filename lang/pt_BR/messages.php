@@ -154,6 +154,7 @@ return [
         'next' => 'Próximo',
         'actions' => 'Ações',
         'back' => 'Voltar',
+        'back_to_list' => 'clique aqui para voltar à listagem',
         'password_info_1'=> '* A senha deve ter pelo menos 8 caracteres',
         'password_info_2'=> '* Combinação de letras maiúsculas, minúsculas e números',
         'password_info_3'=> '* Uso de caracteres especiais',

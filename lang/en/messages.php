@@ -156,6 +156,7 @@ return [
         'next' => 'Next',
         'actions' => 'Actions',
         'back' => 'Back',
+        'back_to_list' => 'click here to back to list',
         'password_info_1'=> '* Password must be at least 8 characters',
         'password_info_2'=> '* Combination of uppercase, lowercase and numbers',
         'password_info_3'=> '* Use of special characters',

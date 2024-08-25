@@ -8,6 +8,7 @@ import ConfirmationDialog from '@/Components/ConfirmationDialog.vue'
 import AlertSuccess from '@/Components/AlertSuccess.vue'
 import AlertError from '@/Components/AlertError.vue'
 import Search from '@/Components/Search.vue'
+import FilterList from '@/Components/SidebarRight.vue'
 
 const props = defineProps({
     users: Object,
@@ -16,7 +17,9 @@ const props = defineProps({
 })
 
 const search = ref(props.filters.search)
+const status = ref(props.filters.status ?? 'all')
 const showConfirmDelete = ref(false)
+const showFilter = ref(false)
 const selectedUser = ref({})
 
 const breadcrumbs = [
@@ -25,7 +28,7 @@ const breadcrumbs = [
 ]
 
 const searchUsers = () => {
-    router.get('/users', { search: search.value }, { preserveState: true, replace: true })
+    router.get('/users', { search: search.value, status: status.value }, { preserveState: true })
 }
 
 const confirmDelete = role => {
@@ -38,6 +41,10 @@ const deleteUser = () => {
 
     selectedUser.value = null
     showConfirmDelete.value = false
+}
+
+const openFilter = () => {
+    showFilter.value = true
 }
 </script>
 
@@ -66,10 +73,15 @@ const deleteUser = () => {
                                 <div class="border dark:border-gray-700 rounded-lg divide-y divide-gray-200 dark:divide-gray-700">
                                     <div class="flex justify-between py-3 px-4 bg-white dark:bg-gray-800">
                                         <Search v-model="search" @search="searchUsers" />
+                                        <div class="flex items-center gap-4">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 cursor-pointer" @click="openFilter">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
+                                            </svg>
 
-                                        <Link :href="route('users.create')" class="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
-                                            {{ __('users.index.add_user') }}
-                                        </Link>
+                                            <Link :href="route('users.create')" class="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
+                                                {{ __('users.index.add_user') }}
+                                            </Link>
+                                        </div>
                                     </div>
 
                                     <div class="overflow-hidden">
@@ -126,8 +138,11 @@ const deleteUser = () => {
                                                     </td>
                                                 </tr>
                                                 <tr v-if="!users.data.length">
-                                                    <td colspan="6" class="px-6 py-4 whitespace-nowrap bg-red-100 text-center text-sm font-medium text-red-800">
-                                                        {{ __('users.index.not_found') }}
+                                                    <td colspan="7" class="px-6 py-4 whitespace-nowrap bg-red-100 text-center text-sm font-medium text-red-800">
+                                                        {{ __('users.index.not_found') }},
+                                                        <Link :href="route('users.index')" class="inline-flex mt-2 underline">
+                                                            {{ __('common.back_to_list') }}
+                                                        </Link>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -143,6 +158,25 @@ const deleteUser = () => {
                 </div>
             </div>
         </div>
+
+        <FilterList :show="showFilter" @close="showFilter = false">
+            <div class="p-2">
+                <div class="mb-4">
+                    <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Status
+                    </label>
+                    <select v-model="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option value="all">All</option>
+                        <option value="active">Active</option>
+                        <option value="trashed">Only Trashed</option>
+                    </select>
+                </div>
+
+                <button @click="searchUsers" class="w-full inline-flex justify-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
+                    {{ __('common.search') }}
+                </button>
+            </div>
+        </FilterList>
 
         <ConfirmationDialog
             :show="showConfirmDelete"
