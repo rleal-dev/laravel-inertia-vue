@@ -8,6 +8,11 @@ import DropdownLink from '@/Components/DropdownLink.vue'
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue'
 import ToggleTheme from '@/Components/ToggleTheme.vue'
 import SelectLanguages from '@/Components/SelectLanguages.vue'
+import Breadcrumbs from '@/Components/Breadcrumbs.vue'
+
+defineProps({
+    breadcrumbs: { type: Array },
+})
 
 const showingNavigationDropdown = ref(false)
 </script>
@@ -151,8 +156,9 @@ const showingNavigationDropdown = ref(false)
         <!-- Page Heading -->
         <header v-if="$slots.header" class="md:ml-64 pt-8">
             <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
-                <div class="p-6 bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="md:flex md:justify-between py-6 px-8 bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <slot name="header" />
+                    <Breadcrumbs v-if="breadcrumbs" :links="breadcrumbs" />
                 </div>
             </div>
         </header>

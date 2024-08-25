@@ -21,6 +21,11 @@ const showModalForm = ref(false)
 const showConfirmDelete = ref(false)
 const selectedRole = ref({})
 
+const breadcrumbs = [
+    { label: 'menus.dashboard', to: 'dashboard' },
+    { label: 'menus.roles', active: true },
+]
+
 const searchRoles = () => {
     router.get('/roles', { search: search.value }, { preserveState: true, replace: true })
 }
@@ -50,9 +55,12 @@ const deleteRole = () => {
 <template>
     <Head title="Roles" />
 
-    <AuthenticatedLayout>
+    <AuthenticatedLayout v-bind="{breadcrumbs}">
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            <h2 class="flex font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6 mr-2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z" />
+                </svg>
                 {{ __('roles.index.page_title') }}
             </h2>
         </template>

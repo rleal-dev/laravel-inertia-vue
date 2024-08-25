@@ -117,6 +117,11 @@ return [
         ],
     ],
 
+    'modules' => [
+        'preferences' => 'Preferences',
+        'users' => 'Users',
+    ],
+
     'menus' => [
         'dashboard' => 'Dashboard',
         'users' => 'Users',
@@ -141,6 +146,7 @@ return [
     'common' => [
         'search' => 'Search',
         'show' => 'Show',
+        'create' => 'Create',
         'edit' => 'Edit',
         'cancel' => 'Cancel',
         'save' => 'Save',

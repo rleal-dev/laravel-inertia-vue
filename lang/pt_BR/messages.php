@@ -38,7 +38,7 @@ return [
     ],
 
     'profile' => [
-        'page_title' => 'Perfil',
+        'page_title' => 'Meu Perfil',
         'edit' => [
             'title' => 'Informações do Perfil',
             'info' => 'Atualize as informações do perfil e o endereço de e-mail da sua conta.',
@@ -115,11 +115,16 @@ return [
         ],
     ],
 
+    'modules' => [
+        'preferences' => 'Preferências',
+        'users' => 'Usuários',
+    ],
+
     'menus' => [
         'dashboard' => 'Painel',
         'users' => 'Usuários',
         'roles' => 'Funções',
-        'profile' => 'Perfil',
+        'profile' => 'Meu Perfil',
         'logout' => 'Sair',
     ],
 
@@ -139,6 +144,7 @@ return [
     'common' => [
         'search' => 'Pesquisar',
         'show' => 'Detalhes',
+        'create' => 'Novo',
         'edit' => 'Editar',
         'cancel' => 'Cancelar',
         'save' => 'Salvar',
