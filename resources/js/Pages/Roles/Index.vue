@@ -3,20 +3,17 @@ import { ref } from 'vue'
 import { router } from '@inertiajs/vue3'
 
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
-import Pagination from '@/Components/Pagination.vue'
-import ConfirmationDialog from '@/Components/ConfirmationDialog.vue'
-import AlertSuccess from '@/Components/AlertSuccess.vue'
-import AlertError from '@/Components/AlertError.vue'
-import Search from '@/Components/Search.vue'
+import { Search, Pagination, AlertError, AlertSuccess, ConfirmationDialog } from '@/Components'
+
 import Form from './Form.vue'
 
-const props = defineProps({
+const { filters } = defineProps({
     roles: Object,
     filters: Object,
     permissions: Object,
 })
 
-const search = ref(props.filters.search)
+const search = ref(filters.search)
 const showModalForm = ref(false)
 const showConfirmDelete = ref(false)
 const selectedRole = ref({})
@@ -27,7 +24,7 @@ const breadcrumbs = [
 ]
 
 const searchRoles = () => {
-    router.get('/roles', { search: search.value }, { preserveState: true, replace: true })
+    router.get('/roles', { search: search.value }, { preserveState: true })
 }
 
 const showForm = (role = null) => {
