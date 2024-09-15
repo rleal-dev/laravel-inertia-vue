@@ -139,6 +139,7 @@ return [
         'roles' => 'Funções',
         'created_at' => 'Criado em',
         'photo' => 'Foto',
+        'status' => 'Status',
     ],
 
     'common' => [

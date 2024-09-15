@@ -30,6 +30,7 @@ class GetUserList
                 'name' => $user->name,
                 'email' => $user->email,
                 'avatar_url' => $user->avatar_url,
+                'status' => $user->status,
                 'roles' => $user->roles->pluck('name'),
                 'created_at' => $user->created_at->toDateTimeString(),
             ]);

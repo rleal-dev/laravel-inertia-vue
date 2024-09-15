@@ -141,6 +141,7 @@ return [
         'roles' => 'Roles',
         'created_at' => 'Created At',
         'photo' => 'Photo',
+        'status' => 'Status',
     ],
 
     'common' => [

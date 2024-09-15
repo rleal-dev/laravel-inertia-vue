@@ -28,7 +28,7 @@ class UserController
 
     public function store(UserStoreRequest $request): RedirectResponse
     {
-        $user = User::create($request->only(['name', 'email', 'password']));
+        $user = User::create($request->only(['name', 'email', 'password', 'status']));
         $user->roles()->sync($request->roles);
 
         if ($request->hasFile('avatar')) {
@@ -59,9 +59,10 @@ class UserController
             'email' => ['required', 'max:50', 'email', Rule::unique('users')->ignore($user->id)],
             'roles' => ['required', 'array'],
             'avatar' => ['nullable'],
+            'status' => ['required'],
         ]);
 
-        $user->update($request->only(['name', 'email']));
+        $user->update($request->only(['name', 'email', 'status']));
         $user->roles()->sync($request->roles);
 
         if ($request->hasFile('avatar')) {

@@ -15,7 +15,7 @@ class UserViewModel extends ViewModel
     public function user()
     {
         return [
-            ...$this->user->only('id', 'name', 'email', 'avatar_url'),
+            ...$this->user->only('id', 'name', 'email', 'avatar_url', 'status'),
             'roles' => $this->user->roles->pluck('name', 'id'),
         ];
     }

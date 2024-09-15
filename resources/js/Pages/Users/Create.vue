@@ -24,6 +24,7 @@ const form = useForm({
     password: '',
     password_confirmation: '',
     avatar: null,
+    status: true,
     image_preview: null
 })
 
@@ -148,7 +149,18 @@ const previewImage = event => {
                                     <InputError class="mt-2" :message="form.errors.avatar" />
                                 </div>
 
-                                <div class="sm:col-span-6">
+                                <div class="col-span-full">
+                                    <InputLabel for="password_confirmation" :value="__('fields.status')" />
+
+                                    <label class="inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" v-model="form.status" class="sr-only peer">
+                                        <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
+                                    </label>
+                                </div>
+
+                                <hr class="col-span-full dark:border-gray-700">
+
+                                <div class="col-span-full">
                                     <InputLabel for="email" :value="__('fields.roles')" />
 
                                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
@@ -169,6 +181,8 @@ const previewImage = event => {
                                     <InputError class="mt-2" :message="form.errors.roles" />
                                 </div>
                             </div>
+
+                            <hr class="dark:border-gray-700">
 
                             <div class="flex items-center gap-2">
                                 <PrimaryButton :loading="form.processing">{{ __('common.save') }}</PrimaryButton>

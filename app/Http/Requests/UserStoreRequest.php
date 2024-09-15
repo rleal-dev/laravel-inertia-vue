@@ -27,6 +27,7 @@ class UserStoreRequest extends FormRequest
             'roles' => ['required', 'array'],
             'password' => ['required', 'confirmed', Password::defaults()],
             'avatar' => ['nullable'],
+            'status' => ['required'],
         ];
     }
 }
