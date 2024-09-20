@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Models\Traits\EnableActivityLogs;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\{BelongsToMany, HasMany};
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -66,5 +66,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class)->withTimestamps();
+    }
+
+    public function authTokens(): HasMany
+    {
+        return $this->hasMany(AuthToken::class);
+    }
+
+    public function pendingAuthTokens(): HasMany
+    {
+        return $this->hasMany(AuthToken::class)->whereNull('verified_at');
     }
 }

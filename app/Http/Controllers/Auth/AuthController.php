@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Requests\Auth\LoginRequest;
-use Illuminate\Http\{RedirectResponse, Request};
 use Inertia\Response;
+use App\Http\Requests\Auth\LoginRequest;
+use App\Actions\AuthToken\CreateAuthToken;
+use Illuminate\Http\{RedirectResponse, Request};
 
 class AuthController
 {
@@ -26,10 +27,12 @@ class AuthController
         $request->authenticate();
         $request->session()->regenerate();
 
-        $request->user()->last_login_at = now()->toDateTimeString();
-        $request->user()->save();
+        (new CreateAuthToken())->handle($request->user());
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        // $request->user()->last_login_at = now()->toDateTimeString();
+        // $request->user()->save();
+
+        return redirect()->intended(route('verify.token', absolute: false));
     }
 
     /**

@@ -20,6 +20,12 @@ return [
         'register' => 'Create an account',
     ],
 
+    'verify_token' => [
+        'info' => 'Enter the token received in your email address and click verify token.',
+        'check' => 'Verify Token',
+        'return_login' => 'Return to login',
+    ],
+
     'forgot_password' => [
         'info' => 'Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.',
         'reset_link' => 'Email Password Reset Link',
@@ -142,6 +148,7 @@ return [
         'created_at' => 'Created At',
         'photo' => 'Photo',
         'status' => 'Status',
+        'token' => 'Token',
     ],
 
     'common' => [

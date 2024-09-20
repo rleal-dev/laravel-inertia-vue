@@ -11,7 +11,7 @@ Route::get('/language/{language}', function ($language) {
     return redirect()->back();
 })->name('language');
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'check-user'])->group(function () {
     Route::get('/dashboard', [Admin\DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/profile', [Admin\ProfileController::class, 'edit'])->name('profile.edit')->middleware('password.confirm');

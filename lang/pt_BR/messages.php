@@ -20,6 +20,12 @@ return [
         'register' => 'Criar uma conta',
     ],
 
+    'verify_token' => [
+        'info' => 'Informe o token recebido no seu endereço de email e clique em verificar token.',
+        'check' => 'Verificar Token',
+        'return_login' => 'Voltar ao login',
+    ],
+
     'forgot_password' => [
         'info' => 'Esqueceu sua senha? Sem problemas. Basta nos informar seu endereço de e-mail e nós enviaremos um link de redefinição de senha para que você possa escolher uma nova.',
         'reset_link' => 'Enviar Link de Redefinição de Senha',
@@ -140,6 +146,7 @@ return [
         'created_at' => 'Criado em',
         'photo' => 'Foto',
         'status' => 'Status',
+        'token' => 'Token',
     ],
 
     'common' => [
