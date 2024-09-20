@@ -23,6 +23,7 @@ return [
     'verify_token' => [
         'info' => 'Enter the token received in your email address and click verify token.',
         'check' => 'Verify Token',
+        'resend' => 'Resend Token',
         'return_login' => 'Return to login',
     ],
 

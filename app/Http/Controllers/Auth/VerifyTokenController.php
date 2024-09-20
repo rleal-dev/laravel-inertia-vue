@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Inertia\Response;
 use App\Models\AuthToken;
-use App\Http\Requests\Auth\LoginRequest;
+use App\Actions\AuthToken\CreateAuthToken;
 use Illuminate\Http\{RedirectResponse, Request};
 
 class VerifyTokenController
@@ -22,7 +22,7 @@ class VerifyTokenController
     /**
      * Handle an incoming verification token request.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $authToken = AuthToken::query()
             ->whereUserId($request->user()->id)
@@ -39,5 +39,15 @@ class VerifyTokenController
         $request->user()->save();
 
         return redirect()->intended(route('dashboard', absolute: false));
+    }
+
+    /**
+     * Handle an incoming verification token request.
+     */
+    public function resend(Request $request): RedirectResponse
+    {
+        (new CreateAuthToken())->handle($request->user());
+
+        return redirect()->intended(route('verify.token', absolute: false));
     }
 }

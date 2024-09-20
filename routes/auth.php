@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('verify-token', [Auth\VerifyTokenController::class, 'create'])->name('verify.token');
     Route::post('verify-token', [Auth\VerifyTokenController::class, 'store'])->name('check.token');
+    Route::post('resend-token', [Auth\VerifyTokenController::class, 'resend'])->name('resend.token');
 
     Route::get('verify-email/{id}/{hash}', Auth\VerifyEmailController::class)
                 ->middleware(['signed', 'throttle:6,1'])

@@ -23,6 +23,7 @@ return [
     'verify_token' => [
         'info' => 'Informe o token recebido no seu endereço de email e clique em verificar token.',
         'check' => 'Verificar Token',
+        'resend' => 'Re-enviar Token',
         'return_login' => 'Voltar ao login',
     ],
 
