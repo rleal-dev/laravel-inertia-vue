@@ -7,9 +7,9 @@ use Spatie\ViewModels\ViewModel;
 
 class RoleListViewModel extends ViewModel
 {
-    public function roles(GetRoleList $roleList)
+    public function roles()
     {
-        return $roleList->handle();
+        return (new GetRoleList)->handle();
     }
 
     public function filters()

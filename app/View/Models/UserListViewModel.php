@@ -7,9 +7,9 @@ use Spatie\ViewModels\ViewModel;
 
 class UserListViewModel extends ViewModel
 {
-    public function users(GetUserList $userList)
+    public function users()
     {
-        return $userList->handle();
+        return (new GetUserList)->handle();
     }
 
     public function filters()
