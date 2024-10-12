@@ -23,6 +23,7 @@ const form = useForm({
 const saveRole = () => {
     const params = {
         preserveScroll: false,
+        preserveState: false,
         onSuccess: closeModal,
     }
 
