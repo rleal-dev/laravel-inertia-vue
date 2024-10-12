@@ -169,5 +169,9 @@ return [
         'password_info_1'=> '* Password must be at least 8 characters',
         'password_info_2'=> '* Combination of uppercase, lowercase and numbers',
         'password_info_3'=> '* Use of special characters',
+        'all'=> 'All',
+        'active'=> 'Active',
+        'inactive'=> 'Inactive',
+        'trashed'=> 'Only Trashed',
     ],
 ];

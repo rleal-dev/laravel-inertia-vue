@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Inertia\Response;
-use App\Http\Requests\Auth\LoginRequest;
 use App\Actions\AuthToken\CreateAuthToken;
+use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\{RedirectResponse, Request};
+use Inertia\Response;
 
 class AuthController
 {

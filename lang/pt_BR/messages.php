@@ -167,5 +167,9 @@ return [
         'password_info_1'=> '* A senha deve ter pelo menos 8 caracteres',
         'password_info_2'=> '* Combinação de letras maiúsculas, minúsculas e números',
         'password_info_3'=> '* Uso de caracteres especiais',
+        'all'=> 'Todos',
+        'active'=> 'Ativos',
+        'inactive'=> 'Inativos',
+        'trashed'=> 'Excluídos',
     ],
 ];

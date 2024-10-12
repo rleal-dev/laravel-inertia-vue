@@ -9,7 +9,7 @@ class RoleListViewModel extends ViewModel
 {
     public function roles()
     {
-        return (new GetRoleList)->handle();
+        return (new GetRoleList())->handle();
     }
 
     public function filters()

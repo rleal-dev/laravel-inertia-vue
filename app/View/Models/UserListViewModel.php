@@ -9,7 +9,7 @@ class UserListViewModel extends ViewModel
 {
     public function users()
     {
-        return (new GetUserList)->handle();
+        return (new GetUserList())->handle();
     }
 
     public function filters()

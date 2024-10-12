@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Inertia\Response;
-use App\Models\AuthToken;
 use App\Actions\AuthToken\CreateAuthToken;
+use App\Models\AuthToken;
 use Illuminate\Http\{RedirectResponse, Request};
+use Inertia\Response;
 
 class VerifyTokenController
 {

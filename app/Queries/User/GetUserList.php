@@ -19,6 +19,14 @@ class GetUserList
                     $query->withTrashed();
                 }
 
+                if ($status === 'active') {
+                    $query->where('status', 1);
+                }
+
+                if ($status === 'inactive') {
+                    $query->where('status', 0);
+                }
+
                 if ($status === 'trashed') {
                     $query->onlyTrashed();
                 }
