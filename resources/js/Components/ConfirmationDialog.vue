@@ -3,7 +3,7 @@ import Modal from '@/Components/Modal.vue'
 import SecondaryButton from '@/Components/SecondaryButton.vue'
 import DangerButton from '@/Components/DangerButton.vue'
 
-const props = defineProps({
+defineProps({
     show: { type: Boolean },
     title: { type: String },
     message: { type: String },
