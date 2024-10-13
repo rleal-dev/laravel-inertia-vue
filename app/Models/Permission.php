@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Role extends Model
+class Permission extends Model
 {
     use SoftDeletes;
     use EnableActivityLogs;
@@ -21,13 +21,8 @@ class Role extends Model
         'name',
     ];
 
-    public function users(): BelongsToMany
+    public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(User::class)->withTimestamps();
-    }
-
-    public function permissions(): BelongsToMany
-    {
-        return $this->belongsToMany(Permission::class)->withTimestamps();
+        return $this->belongsToMany(Role::class)->withTimestamps();
     }
 }

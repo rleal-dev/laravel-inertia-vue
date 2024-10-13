@@ -20,7 +20,9 @@ class RoleListViewModel extends ViewModel
     public function permissions()
     {
         return [
-            'edit' => true,
+            'create' => request()->user()->can('roles.create'),
+            'edit' => request()->user()->can('roles.edit'),
+            'destroy' => request()->user()->can('roles.edit'),
         ];
     }
 }
