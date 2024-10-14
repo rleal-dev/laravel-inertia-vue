@@ -7,6 +7,7 @@ use App\Models\Role;
 use App\Models\User;
 use App\View\Models\UserListViewModel;
 use App\View\Models\UserViewModel;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -14,13 +15,19 @@ use Inertia\Response;
 
 class UserController
 {
+    use AuthorizesRequests;
+
     public function index(): Response
     {
+        $this->authorize('users_index');
+
         return inertia('Users/Index', new UserListViewModel());
     }
 
     public function create(): Response
     {
+        $this->authorize('users_create');
+
         return inertia('Users/Create', [
             'roles' => Role::all(),
         ]);
@@ -28,6 +35,8 @@ class UserController
 
     public function store(UserStoreRequest $request): RedirectResponse
     {
+        $this->authorize('users_create');
+
         $user = User::create($request->only(['name', 'email', 'password', 'status']));
         $user->roles()->sync($request->roles);
 
@@ -44,16 +53,22 @@ class UserController
 
     public function show(User $user): Response
     {
+        $this->authorize('users_show');
+
         return inertia('Users/Show', new UserViewModel($user));
     }
 
     public function edit(User $user): Response
     {
+        $this->authorize('users_edit');
+
         return inertia('Users/Edit', new UserViewModel($user));
     }
 
     public function update(Request $request, User $user)
     {
+        $this->authorize('users_edit');
+
         $request->validate([
             'name' => ['required', 'string', 'max:50'],
             'email' => ['required', 'max:50', 'email', Rule::unique('users')->ignore($user->id)],
@@ -78,6 +93,8 @@ class UserController
 
     public function destroy(User $user)
     {
+        $this->authorize('users_destroy');
+
         if (auth()->user()->is($user)) {
             return back()->with('error', __('messages.users.delete.error'));
         }

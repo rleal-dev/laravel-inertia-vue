@@ -33,7 +33,8 @@ class HandleInertiaRequests extends Middleware
         return [
             ...parent::share($request),
             'auth' => [
-                'user' => $request->user()?->only('id', 'name', 'email', 'avatar_url'),
+                'user' => $this->getUser($request),
+                'can' => $this->getPermissions($request),
             ],
             'flash' => [
                 'success' => $request->session()->get('success'),
@@ -42,5 +43,23 @@ class HandleInertiaRequests extends Middleware
             'language' => app()->getLocale(),
             'translations' => File::exists($langFile) ? require $langFile : [],
         ];
+    }
+
+    private function getUser(Request $request)
+    {
+        return $request->user()?->only('id', 'name', 'email', 'avatar_url');
+    }
+    
+    private function getPermissions(Request $request)
+    {
+        return $request->user()?->loadMissing('roles.permissions')
+            ->roles
+            ->pluck('permissions')
+            ->flatten()
+            ->unique('name')
+            ->mapWithKeys(fn ($permission) => [
+                $permission['name'] => $request->user()->can($permission['name'])
+            ])
+            ->all();
     }
 }

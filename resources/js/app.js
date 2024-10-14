@@ -1,7 +1,7 @@
 import '../css/app.css'
 
 import { createApp, h } from 'vue'
-import { router, createInertiaApp } from '@inertiajs/vue3'
+import { router, usePage, createInertiaApp } from '@inertiajs/vue3'
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
 import { ZiggyVue } from '../../vendor/tightenco/ziggy'
 import NProgress from 'nprogress'
@@ -23,6 +23,20 @@ createInertiaApp({
             .component('Link', Link);
 
             app.config.globalProperties.__ = __
+
+            app.config.globalProperties.$can = permissions => {
+                const { can } = usePage().props.auth || {}
+
+                if (typeof permissions === 'string') {
+                    return can?.[permissions] ?? false
+                }
+
+                if (Array.isArray(permissions)) {
+                    return permissions.some(permission => can?.[permission] ?? false)
+                }
+
+                return false
+            }
             
             app.mount(el);
     },

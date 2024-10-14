@@ -16,13 +16,4 @@ class RoleListViewModel extends ViewModel
     {
         return request()->only(['search']);
     }
-
-    public function permissions()
-    {
-        return [
-            'create' => request()->user()->can('roles.create'),
-            'edit' => request()->user()->can('roles.edit'),
-            'destroy' => request()->user()->can('roles.edit'),
-        ];
-    }
 }
