@@ -111,16 +111,19 @@ return [
             'info' => 'Create a new role',
             'description' => 'Fill in the required fields and click save',
             'success' => 'Role created',
+            'error' => 'Error creating role',
         ],
         'edit' => [
             'page_title' => 'Edit Role',
             'info' => 'Edit the role information',
             'success' => 'Role updated',
+            'error' => 'Error updating role',
         ],
         'delete' => [
             'confirm_delete_title' => 'Please Confirm',
             'confirm_delete_message' => 'Are you sure you want to delete the user?',
             'success' => 'Role deleted',
+            'error' => 'Error deleting role',
         ],
     ],
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions\Role\CreateRole;
 use App\Http\Requests\RoleStoreRequest;
 use App\Models\Role;
 use App\View\Models\RoleListViewModel;
@@ -9,6 +10,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Response;
+use Throwable;
 
 class RoleController
 {
@@ -21,11 +23,15 @@ class RoleController
         return inertia('Roles/Index', new RoleListViewModel());
     }
 
-    public function store(RoleStoreRequest $request): RedirectResponse
+    public function store(RoleStoreRequest $request, CreateRole $action): RedirectResponse
     {
         $this->authorize('roles_create');
 
-        Role::create($request->validated());
+        try {
+            $action->handle($request->all());
+        } catch (Throwable $exception) {
+            return back()->with('error', __('messages.roles.create.error'));
+        }
 
         return to_route('roles.index')
             ->with('success', __('messages.roles.create.success'));

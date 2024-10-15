@@ -28,8 +28,6 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        $langFile = lang_path(app()->getLocale() . '/messages.php');
-
         return [
             ...parent::share($request),
             'auth' => [
@@ -41,7 +39,7 @@ class HandleInertiaRequests extends Middleware
                 'error' => $request->session()->get('error'),
             ],
             'language' => app()->getLocale(),
-            'translations' => File::exists($langFile) ? require $langFile : [],
+            'translations' => $this->getTranslations(),
         ];
     }
 
@@ -49,7 +47,7 @@ class HandleInertiaRequests extends Middleware
     {
         return $request->user()?->only('id', 'name', 'email', 'avatar_url');
     }
-    
+
     private function getPermissions(Request $request)
     {
         return $request->user()?->loadMissing('roles.permissions')
@@ -58,8 +56,15 @@ class HandleInertiaRequests extends Middleware
             ->flatten()
             ->unique('name')
             ->mapWithKeys(fn ($permission) => [
-                $permission['name'] => $request->user()->can($permission['name'])
+                $permission['name'] => $request->user()->can($permission['name']),
             ])
             ->all();
+    }
+
+    private function getTranslations()
+    {
+        $langFile = lang_path(app()->getLocale() . '/messages.php');
+
+        return File::exists($langFile) ? require $langFile : [];
     }
 }
