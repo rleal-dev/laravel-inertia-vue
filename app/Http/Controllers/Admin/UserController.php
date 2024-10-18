@@ -67,7 +67,6 @@ class UserController
 
     public function update(Request $request, User $user)
     {
-        sleep(5);
         $this->authorize('users_edit');
 
         $request->validate([
