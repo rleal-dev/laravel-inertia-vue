@@ -75,7 +75,7 @@ const deleteRole = () => {
                                     <div class="flex justify-between py-3 px-4 bg-white dark:bg-gray-800">
                                         <Search v-model="search" @search="searchRoles" />
 
-                                        <button v-if="$can('roles_create')" @click="showForm" class="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
+                                        <button v-if="$can('roles_create')" @click="showForm" class="inline-flex items-center px-4 py-3 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
                                             {{ __('roles.index.add_role') }}
                                         </button>
                                     </div>
